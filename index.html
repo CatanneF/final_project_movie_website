@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+    <title>What's Playing?</title>
+</head>
+<body>
+    <header>
+        <h1>what's playing?</h1>
+        
+    </header>
+    <div id="content-body">
+        <div id = "filter-section">
+            <h2>See what's playing now:</h2>
+            <form id="form"> 
+                <input type="search" id="query" name="q" placeholder="Search..."><br>
+                <button>Search</button>
+            </form>
+            <h3>Filters:</h3>
+            <label for="rating">Rating:</label>
+                <select name="rating" id="rating">
+                    <option value="G">G</option>
+                    <option value="PG">PG</option>
+                    <option value="PG-13">PG-13</option>
+                    <option value="R">R</option>
+                </select>
+                <label for="rating">Genre:</label>
+                <select name="rating" id="rating">
+                    <option value="28">Action</option>
+                    <option value="12">Adventure</option>
+                    <option value="35">Comedy</option>
+                    <option value="18">Drama</option>
+                    <option value="14">Fantasy</option>
+                    <option value="27">Horror</option>
+                    <option value="9648">Mystery</option>
+                    <option value="10749">Romance</option> 
+                </select>    
+        </div>
+        <div id="movies-container">
+            
+                <div class="poster-container">
+                        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="movie poster">
+                        <p class="movie-name">Movie Name</p>      
+                </div> 
+                <div class="poster-container">
+                    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="movie poster">
+                    <p class="movie-name">Movie Name</p>      
+                </div>  
+                <div class="poster-container">
+                    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="movie poster">
+                    <p class="movie-name">Movie Name</p>      
+                </div>      
+                           
+        </div>
+            
+        </div>
+        <div id = "popup-box" class="popup">
+            <div class="popup-content">
+                <p>Movie popup</p>
+                <button id="close-popup">
+                      Close
+                </button>
+                <div>
+                    <h3>The Super Mario Bros. Movie</h3>
+                    <p>(Rating/ Cert)</p>
+                    <p>(Release date)</p>
+                    <p></p>
+    
+                </div>
+                
+                <h4>Overview: </h4>
+                <p>While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.</p>
+              
+                <h4>Director:</h4>
+                <h4>Cast:</h4>
+            </div>
+            </div>
+        </div>
+
+        <div>
+            
+            
+
+    </div>
+    <footer>
+        <p>Website Created by Catherine Felton</p>
+        <p>Source: </p>
+        <img id="md-logo" src="img/JSDev_logo.svg" alt="Movie Database logo">
+    </footer>
+    
+</body>
+</html>
