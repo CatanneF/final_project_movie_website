@@ -19,14 +19,14 @@
     </header>
     <div id="content-body">
         <div id = "filter-section">
-            <h2>See what's playing now:</h2>
+            <h2>Filter Results:</h2>
             <form id="form"> 
                 <input type="search" id="query" name="q" placeholder="Search..."><br>
                 <button>Search</button>
             </form>
             <h3>Filters:</h3>
             <label for="rating">Rating:</label>
-                <select name="rating" id="rating">
+                <select name="rating" id="rating" value="G PG PG-13 R" placeholder="Rating">
                     <option value="G">G</option>
                     <option value="PG">PG</option>
                     <option value="PG-13">PG-13</option>
@@ -34,6 +34,7 @@
                 </select>
                 <label for="rating">Genre:</label>
                 <select name="rating" id="rating">
+                    <option value="28 12 35 18 14 27 9648 10749" disabled selected hidden>Filter by Genre</option>
                     <option value="28">Action</option>
                     <option value="12">Adventure</option>
                     <option value="35">Comedy</option>
@@ -44,55 +45,13 @@
                     <option value="10749">Romance</option> 
                 </select>    
         </div>
-        <div id="movies-container">
-            
-                <div class="poster-container">
-                        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="movie poster">
-                        <p class="movie-name">Movie Name</p>      
-                </div> 
-                <div class="poster-container">
-                    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="movie poster">
-                    <p class="movie-name">Movie Name</p>      
-                </div>  
-                <div class="poster-container">
-                    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="movie poster">
-                    <p class="movie-name">Movie Name</p>      
-                </div>      
-                           
+        <div id="movie-section">
+            <div id="movies-container">                  
         </div>
             
-        </div>
-        <div id = "popup-box" class="popup">
-            <div class="popup-content">
-                <p>Movie popup</p>
-                <button id="close-popup">
-                      Close
-                </button>
-                <div>
-                    <h3>The Super Mario Bros. Movie</h3>
-                    <p>(Rating/ Cert)</p>
-                    <p>(Release date)</p>
-                    <p></p>
-    
-                </div>
-                
-                <h4>Overview: </h4>
-                <p>While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.</p>
-              
-                <h4>Director:</h4>
-                <h4>Cast:</h4>
-            </div>
-            </div>
-        </div>
-
-        <div>
-            
-            
-
-    </div>
     <footer>
         <p>Website Created by Catherine Felton</p>
-        <p>Source: </p>
+        <p>Source: The Movie Database</p>
         <img id="md-logo" src="img/JSDev_logo.svg" alt="Movie Database logo">
     </footer>
     

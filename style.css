@@ -33,12 +33,21 @@ h1 {
 h2 {
     color: var(--green);
 }
+
+
+
+p{
+    font-weight: 200;;
+}
+
+h3 {
+    font-weight: 400;
+}
 footer {
-    margin: 0;
-    
-    padding: 15px;
     bottom: 0;
-    
+    width: 100%;
+    margin: 0;
+    padding: 15px; 
     color: white;
     background-color: #00337C;
     
@@ -50,14 +59,14 @@ footer {
 
 #movies-container {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 120px 20px;
-    background-color: lightgrey; 
+    padding: 80px 20px;
+    margin: 0;
 }
 
 .poster-container {
-    background-color: lightcoral;
     margin: 30px;
 }
 
@@ -80,39 +89,43 @@ footer {
     text-align: center;
 }
 
-.popup {
-    background-color: lightblue;
-}
 
 /*@media (max-width: 900px) {} 
 */
 
-.popup {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+.popup-container {
+    display: flex;
     display: none;
+    
 }
 .popup-content {
+    justify-self: center;
+    align-self: center;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 300px;
+    height: 60vh;
+    overflow: auto;
+    border-radius: 5px;
     background-color: white;
     margin: 10% auto;
     padding: 20px;
-    border: 1px solid #888888;
-    width: 30%;
+    border: 1.5px solid #888888;
     font-weight: bolder;
+    
 }
-.popup-btn button {
-    display: block;
+.close-popup {
     margin: 0 auto;
+    background-color: inherit;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+    font-size: 20px;
+    text-align: center;
+    border: none;
 }
-.show {
-    display: block;
-}
+
 
   
     
