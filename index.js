@@ -9,40 +9,14 @@
 
 //movies.forEach(movie => { console.log("Movie ISO: " + movie.iso_3166_1); movie.release_dates.forEach(release_date => { console.log("Certification: " + release_date.certification); console.log("Descriptors: " + release_date.descriptors); }); });
 
+// SITE url: https://catannef.github.io/final_project_movie_website/
 
 
-
-
-
-
-
-
-    
-    
-
-
-
-// const addMovieInfo = (movies) => {
-//     const movieInfo = document.querySelector('.popup-content');
-//     movies.forEach((movie) => {
-//         let itemPopup = 
-//             `<div id="popup-${movie.id}">
-//             <button class="close-popup">
-//             X
-//       </button>
-//                 <div class= "popup-header">
-//                     <h3>${movie.title}</h3>
-//                 </div>
-//             </div>`;
-//     movieInfo.insertAdjacentHTML("beforeend", itemPopup);
-
-//     });
-    
-// }
 
 
 !(function () {
-    //Add Movies to Doc
+
+//Add Movies to Doc
 const addMovies = (movies) => {
     const movieImg = document.querySelector('#movies-container');
     
@@ -54,23 +28,27 @@ const addMovies = (movies) => {
                 </div> 
                 <div class="popup-container" id="popup-${movie.id}">
                     <div class="popup-content" id="popupInfo-${movie.id}">
-                        <button class = "close-popup" id = "btn-${movie.id}">
-                            X
-                        </button> 
-                        <h3 class="popup-title">${movie.original_title}</h3>
-                        <p>Release Date: ${movie.release_date}</p>
-                        <h4>Overview</h4>
-                        <p>${movie.overview}</p>
-                        <h4>Cast:</h4>
+                        <div class= "popup-header">
+                            <button class = "close-popup" id = "btn-${movie.id}">
+                                X
+                            </button> 
+                            <h3 class="popup-title">${movie.original_title}</h3>
+                        </div>
+                        <div class= "popup-info">
+                            <p>Release Date: ${movie.release_date}</p>
+                            <h4>Overview</h4>
+                            <p>${movie.overview}</p>
+                            <h4>Cast:</h4>
+                        </div>
 
-                    </div>
+                </div>
             </div>`;
 
             const addMovieInfo = (movieInfo) => {  
                 movieInfo.slice(0, 10).forEach((movieCast) => {
                     
                         let cast = 
-                            `<p>${movieCast.character}:   ${movieCast.name}</p>`;
+                            `<p class="cast">${movieCast.character}:   ${movieCast.name}</p>`;
                             let addCast = document.querySelector(`#popupInfo-${movie.id}`)
                             addCast.insertAdjacentHTML("beforeend", cast);
                     
@@ -97,12 +75,7 @@ const addMovies = (movies) => {
             closeBtn.addEventListener("click", () => {
                 //console.log(`close me ${movie.id}`)
                 popupBox.style.display = "none";
-            });
-
-            
-
-            
-            
+            });     
 
     });
 };
@@ -118,24 +91,7 @@ const addMovies = (movies) => {
      
 })();
 
-/* <div id = "popup-box${movie.id}" class="popup-box">
-            <div class="popup-content">
-                <button id="close-popup">
-                      X
-                </button>
-                <div id="movie-header">
-                    <h3>${movie.original_title}</h3>
-                    <p>Rating: PG</p>
-                    <p>Release Date: ${movie.release_date}</p>
-                </div>
-                <div id="movie-info">
-                    <h4>Overview: </h4>
-                    <p>${movie.overview}</p>
-                    <h4>Director:</h4>
-                    <h4>Cast:</h4>
-                </div>
-            </div>
-        </div> */
+
 
          
 
