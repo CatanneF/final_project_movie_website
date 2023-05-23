@@ -21,20 +21,21 @@
         <div id = "filter-section">
             <h2>Filter Results:</h2>
             <form id="form"> 
-                <input type="search" id="query" name="q" placeholder="Search..."><br>
-                <button>Search</button>
+                <label for="search">Search:</label>
+                <input type="search" id="query" name="q" placeholder="Search movies..."><br>
+                <button id="search-btn">Search</button>
             </form>
-            <h3>Filters:</h3>
-            <label for="rating">Rating:</label>
+            <label for="rating" class="top-margin">Rating:</label>
                 <select name="rating" id="rating" value="G PG PG-13 R" placeholder="Rating">
+                    <option value="">Rating</option> 
                     <option value="G">G</option>
                     <option value="PG">PG</option>
                     <option value="PG-13">PG-13</option>
                     <option value="R">R</option>
                 </select>
-                <label for="rating">Genre:</label>
-                <select name="rating" id="rating">
-                    <option value="28 12 35 18 14 27 9648 10749" disabled selected hidden>Filter by Genre</option>
+                <label for="genre" class="top-margin">Genre:</label>
+                <select name="genre" id="genre">
+                    <option value="">Genre</option> 
                     <option value="28">Action</option>
                     <option value="12">Adventure</option>
                     <option value="35">Comedy</option>
