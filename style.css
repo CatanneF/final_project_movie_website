@@ -63,6 +63,10 @@ label {
     padding: 0 15px;
 }
 
+#query {
+    width: 250px;
+}
+
 select {
     height: 30px;
     margin-top: 30px;
@@ -86,9 +90,8 @@ h3 {
 
 footer {
     bottom: 0;
-    
     margin: 0;
-    padding: 15px; 
+    padding: 15px 50px; 
     color: white;
     background-color: #00337C;
     
@@ -141,7 +144,7 @@ footer {
 }
 .popup-content {
     position: fixed;
-    top: 30%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
@@ -182,7 +185,7 @@ footer {
 }
 
 .close-popup:hover {
-    font-size: 25px;
+    font-size: 22px;
 }
 
 .popup-info {
@@ -197,6 +200,15 @@ footer {
 
 .hide {
     display: none;
+}
+
+#source {
+    display: flex;
+}
+
+#source img {
+    padding-left: 30px;
+    margin-top: 31px;
 }
 
 

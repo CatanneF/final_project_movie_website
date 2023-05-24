@@ -1,24 +1,15 @@
 //api key: b816687edc67d6b0d9bd7c383f188f2f
-//link (now playing): https://api.themoviedb.org/3/movie/now_playing?api_key=b816687edc67d6b0d9bd7c383f188f2f&language=en-US&page=1
-//xx certifications url: https://api.themoviedb.org/3/certification/movie/list?api_key=b816687edc67d6b0d9bd7c383f188f2f
-//xx img link : https://api.themoviedb.org/3/movie/${movie.id}/images?api_key=b816687edc67d6b0d9bd7c383f188f2f&language=en-US
+//now playing: https://api.themoviedb.org/3/movie/now_playing?api_key=b816687edc67d6b0d9bd7c383f188f2f&language=en-US&page=1
 //rating and release: https://api.themoviedb.org/3/movie/${movie.id}/release_dates?api_key=b816687edc67d6b0d9bd7c383f188f2f
-    // "iso_3166_1": "US", certification
-//cast url: https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=b816687edc67d6b0d9bd7c383f188f2f&language=en-US
-//images: https://image.tmdb.org/t/p/w500/${movie.poster-path}
-
-//movies.forEach(movie => { console.log("Movie ISO: " + movie.iso_3166_1); movie.release_dates.forEach(release_date => { console.log("Certification: " + release_date.certification); console.log("Descriptors: " + release_date.descriptors); }); });
-
-// SITE url: https://catannef.github.io/fin  al_project_movie_website/
-
-
-
+//cast: https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=b816687edc67d6b0d9bd7c383f188f2f&language=en-US
+//get images: https://image.tmdb.org/t/p/w500/${movie.poster-path}
+// SITE url: https://catannef.github.io/final_project_movie_website/
 
 !(function () {
 
 //Searchbar
     const searchInput = document.querySelector("#query");
-    const searchBtn = document.querySelector('#search-btn')
+    // const searchBtn = document.querySelector('#search-btn')
     const genreDropdown = document.querySelector('#genre'); 
     const ratingDropdown = document.querySelector('#rating')
     let movieNames = [];
@@ -27,28 +18,46 @@
     
 
     searchInput.addEventListener("input", (e) => {
-        const value = e.target.value 
-        movies = movieNames.filter((movie) => {
-            return movie.original_title.includes(value)     
-        });
-        console.log(movies)    
+        const value = e.target.value.toLowerCase() 
+        console.log(movieNames)
+        movieNames.filter((movie) => {
+            if (movie.original_title.toLowerCase().includes(value)) {
+                document.querySelector(`#movie-${movie.id}`).style.display = "block"
+            } else {
+                document.querySelector(`#movie-${movie.id}`).style.display = "none";
+            }     
+        });   
     })
-    //  searchBtn.addEventListener("click", (movies) => {
-    //      addMovies(movies)
-    //  });
 
      genreDropdown.addEventListener("change", () => {
         let genreResult = genreDropdown.value;
         console.log(genreResult)
-        moviesGenre = movieNames.filter((movie) => {
-            return movie.genre_ids.includes(genreResult)     
+        console.log(movieNames)
+        movieNames.filter((movie) => {
+            console.log(movie.genre_ids)
+            if(movie.genre_ids.includes(genreResult))  {
+                console.log("true")
+                document.querySelector(`#movie-${movie.id}`).style.display = "block"
+            } else {
+                console.log("false")
+                document.querySelector(`#movie-${movie.id}`).style.display = "none";     
+            };   
         });
-        console.log(moviesGenre)
      });
 
      ratingDropdown.addEventListener("change", () => {
         let ratingResult = ratingDropdown.value;
         console.log(ratingResult);
+        movieNames.filter((movie) => {
+            if(movie.rating.includes(ratingResult))  {
+                console.log("true")
+                document.querySelector(`#movie-${movie.id}`).style.display = "block"
+            } else {
+                console.log("false")
+                document.querySelector(`#movie-${movie.id}`).style.display = "none";     
+            };   
+        });
+
      })
     
 
@@ -93,8 +102,10 @@
                     });                     
                 };
 
+            // ADD RATING
                 const addMovieRating = (release) => {
-                    let cert = `<p class = "cert">Rating: ${release.certification}</p>`
+                    movie.rating = `${release.certification}`
+                    let cert = `<p class = "cert">Rating: ${movie.rating}</p>`
                     let addRating = document.querySelector(`#release-${movie.id}`)
                     addRating.insertAdjacentHTML("afterbegin", cert);
                     
@@ -108,7 +119,7 @@
                 popupBox.style.display = "hidden";
                 let posterContainer = document.querySelector(`#movie-${movie.id}`)
                 posterContainer.addEventListener("click", () => {
-                    //console.log(`clicked! ${movie.id}`)
+                    console
                     popupBox.style.display = "block";
 
             // GET CAST INFO FOR MOVIE
@@ -116,8 +127,7 @@
                         .then((res) => res.json())
                         .then((data) => {
                         const movieInfo = data.cast;
-                        addMovieInfo(movieInfo);
-                        
+                        addMovieInfo(movieInfo);             
                     });
 
             // GET MOVIE RATING
@@ -130,10 +140,8 @@
                         });
                         getMoviesCert.forEach((movieCert) => { 
                             movieCert.release_dates.slice(0,1).forEach((release) => {
-                                console.log(release)
                             addMovieRating(release)
                             });
-
                         });   
                     });
                 })
