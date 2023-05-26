@@ -134,8 +134,7 @@ footer {
 }
 
 
-/*@media (max-width: 900px) {} 
-*/
+
 
 .popup-container {
     display: flex;
@@ -144,12 +143,12 @@ footer {
 }
 .popup-content {
     position: fixed;
-    top: 25%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
     width: 50%;
-    height: 60vh;
+    height: 80vh;
     overflow: auto;
     border-radius: 5px;
     background-color: white;
@@ -211,7 +210,8 @@ footer {
     margin-top: 31px;
 }
 
-
+/*@media (max-width: 900px) {} 
+*/
 
 
 

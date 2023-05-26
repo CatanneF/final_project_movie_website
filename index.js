@@ -7,21 +7,21 @@
 
 !(function () {
 
-//Searchbar
+//Searchbar and Dropdowns
     const searchInput = document.querySelector("#query");
     // const searchBtn = document.querySelector('#search-btn')
     const genreDropdown = document.querySelector('#genre'); 
     const ratingDropdown = document.querySelector('#rating')
     let movieNames = [];
+    let ratingList = [];
     let movies;
-
     
+
 
     searchInput.addEventListener("input", (e) => {
         const value = e.target.value.toLowerCase() 
-        console.log(movieNames)
         movieNames.filter((movie) => {
-            if (movie.original_title.toLowerCase().includes(value)) {
+            if (movie.title.toLowerCase().includes(value)) {
                 document.querySelector(`#movie-${movie.id}`).style.display = "block"
             } else {
                 document.querySelector(`#movie-${movie.id}`).style.display = "none";
@@ -30,16 +30,14 @@
     })
 
      genreDropdown.addEventListener("change", () => {
-        let genreResult = genreDropdown.value;
-        console.log(genreResult)
+        let genreResult = parseInt(genreDropdown.value);
+        console.log(typeof genreResult)
         console.log(movieNames)
         movieNames.filter((movie) => {
             console.log(movie.genre_ids)
             if(movie.genre_ids.includes(genreResult))  {
-                console.log("true")
                 document.querySelector(`#movie-${movie.id}`).style.display = "block"
             } else {
-                console.log("false")
                 document.querySelector(`#movie-${movie.id}`).style.display = "none";     
             };   
         });
@@ -47,17 +45,17 @@
 
      ratingDropdown.addEventListener("change", () => {
         let ratingResult = ratingDropdown.value;
-        console.log(ratingResult);
+        console.log(ratingList);
+        console.log(movieNames);  
+        console.log(ratingResult)
         movieNames.filter((movie) => {
-            if(movie.rating.includes(ratingResult))  {
-                console.log("true")
+            if(movie.adult === (ratingResult))  {
                 document.querySelector(`#movie-${movie.id}`).style.display = "block"
             } else {
                 console.log("false")
                 document.querySelector(`#movie-${movie.id}`).style.display = "none";     
             };   
         });
-
      })
     
 
@@ -65,12 +63,13 @@
 //Add Movies to Doc
     const addMovies = (movies) => {
         const movieImg = document.querySelector('#movies-container');
+        let rating;
         
         movies.map((movie) => {
             let item =
                 `<div class = "poster-container" id = "movie-${movie.id}">
                         <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.original_title} movie poster">
-                        <h3 class="movie-name">${movie.original_title}</h3>      
+                        <h3 class="movie-name">${movie.title}</h3>      
                 </div> 
                     <div class="popup-container" id="popup-${movie.id}">
                         <div class="popup-content" id="popupInfo-${movie.id}">
@@ -78,7 +77,7 @@
                                 <button class = "close-popup" id = "btn-${movie.id}">
                                     X
                                 </button> 
-                                <h3 class="popup-title">${movie.original_title}</h3>
+                                <h3 class="popup-title">${movie.title}</h3>
                             </div>
                             <div class= "popup-info">
                                 <div id="release-${movie.id}" class="release">
@@ -104,11 +103,11 @@
 
             // ADD RATING
                 const addMovieRating = (release) => {
-                    movie.rating = `${release.certification}`
-                    let cert = `<p class = "cert">Rating: ${movie.rating}</p>`
+                    movie.adult = release.certification
+                    let cert = `<p class = "cert">Rating: ${movie.adult}</p>`
                     let addRating = document.querySelector(`#release-${movie.id}`)
-                    addRating.insertAdjacentHTML("afterbegin", cert);
-                    
+                    addRating.insertAdjacentHTML("afterbegin", cert);  
+                               
                 }
 
             // INSERT MOVIE POSTERS/ NAME TO DOC
@@ -119,8 +118,8 @@
                 popupBox.style.display = "hidden";
                 let posterContainer = document.querySelector(`#movie-${movie.id}`)
                 posterContainer.addEventListener("click", () => {
-                    console
                     popupBox.style.display = "block";
+                });
 
             // GET CAST INFO FOR MOVIE
                     fetch(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=b816687edc67d6b0d9bd7c383f188f2f&language=en-US`)
@@ -138,12 +137,13 @@
                         let getMoviesCert = movieRating.filter((movieR) => { 
                             return movieR.iso_3166_1.includes("US")   
                         });
-                        getMoviesCert.forEach((movieCert) => { 
+                        getMoviesCert.map((movieCert) => { 
                             movieCert.release_dates.slice(0,1).forEach((release) => {
-                            addMovieRating(release)
+                            addMovieRating(release)  
+                            ratingList.push(release.certification) 
                             });
-                        });   
-                    });
+                        });  
+                    ;
                 })
             // CLOSE POPUP
                 let closeBtn = document.querySelector(`#btn-${movie.id}`);
@@ -151,20 +151,22 @@
                     //console.log(`close me ${movie.id}`)
                     popupBox.style.display = "none";
                 });    
-               movieNames.push(movie);
-
+                movieNames.push(movie);
+                
+                
+               
+               
 
         }); //END OF "MOVIES"
     }; // END OF ADD MOVIE FUNCTION
 
-    // GET CURRENTLY PLAYING MOVIES
+// GET CURRENTLY PLAYING MOVIES
     fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=b816687edc67d6b0d9bd7c383f188f2f&language=en-US&region=US&page=1")
         .then((res) => res.json())
         .then((data) => {
         movies = data.results
         addMovies(movies);
         });
-
      
 })();
 
