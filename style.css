@@ -1,7 +1,7 @@
 :root {
     --darkblue: #13005A;
     --medblue: #00337C;
-    --ltblue: #1C82AD;
+    --ltblue: #2d9fd0;
     --green: #03C988;
 }
 
@@ -37,7 +37,7 @@ h1 {
 }
 
 h2 {
-    margin: 20px 30px 0 0;
+    margin: 20px 20px 0 0;
     font-size: 1.8rem;
 }
 
@@ -47,7 +47,7 @@ form {
     margin: 30px 30px;
 }
 label {
-    margin: 0px 20px 30px 50px;
+    margin: 0px 10px 30px 20px;
     font-size: 20px;
 }
 
@@ -64,15 +64,29 @@ label {
 }
 
 #query {
-    width: 250px;
+    width: 200px;
+    border-radius: 5px;
 }
 
 select {
     height: 30px;
     margin-top: 30px;
     padding: 0px 5px 0 3px;
+    border-radius: 5px;
 }
 
+#reset-btn {
+    background-color: var(--green);
+    font-family: "Oswald";
+    font-weight: 500;
+    font-size: 1rem;;
+    height: 40px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 25px 0 0 60px;
+
+}
 
 p {
     font-weight: 200;
@@ -85,7 +99,8 @@ h3 {
 }
 
 #filter-section {
-    background-color: var(--ltblue);
+    background-color: var(--medblue);
+    color: var(--ltblue)
 }
 
 footer {

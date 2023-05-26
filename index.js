@@ -9,6 +9,7 @@
 
 //Searchbar and Dropdowns
     const searchInput = document.querySelector("#query");
+    const resetBtn = document.querySelector('#reset-btn');
     // const searchBtn = document.querySelector('#search-btn')
     const genreDropdown = document.querySelector('#genre'); 
     const ratingDropdown = document.querySelector('#rating')
@@ -16,13 +17,17 @@
     let ratingList = [];
     let movies;
     
-
+    resetBtn.addEventListener("click", () => {
+        movieNames.forEach((movie) => {
+            document.querySelector(`#movie-${movie.id}`).style.display = "block";
+        } )
+    })
 
     searchInput.addEventListener("input", (e) => {
         const value = e.target.value.toLowerCase() 
         movieNames.filter((movie) => {
             if (movie.title.toLowerCase().includes(value)) {
-                document.querySelector(`#movie-${movie.id}`).style.display = "block"
+                document.querySelector(`#movie-${movie.id}`).style.display = "block";
             } else {
                 document.querySelector(`#movie-${movie.id}`).style.display = "none";
             }     
@@ -31,12 +36,9 @@
 
      genreDropdown.addEventListener("change", () => {
         let genreResult = parseInt(genreDropdown.value);
-        console.log(typeof genreResult)
-        console.log(movieNames)
         movieNames.filter((movie) => {
-            console.log(movie.genre_ids)
             if(movie.genre_ids.includes(genreResult))  {
-                document.querySelector(`#movie-${movie.id}`).style.display = "block"
+                document.querySelector(`#movie-${movie.id}`).style.display = "block";
             } else {
                 document.querySelector(`#movie-${movie.id}`).style.display = "none";     
             };   
@@ -45,25 +47,22 @@
 
      ratingDropdown.addEventListener("change", () => {
         let ratingResult = ratingDropdown.value;
-        console.log(ratingList);
-        console.log(movieNames);  
-        console.log(ratingResult)
         movieNames.filter((movie) => {
             if(movie.adult === (ratingResult))  {
-                document.querySelector(`#movie-${movie.id}`).style.display = "block"
+                document.querySelector(`#movie-${movie.id}`).style.display = "block";
             } else {
-                console.log("false")
                 document.querySelector(`#movie-${movie.id}`).style.display = "none";     
             };   
         });
-     })
+     });
+    
+    
     
 
 
 //Add Movies to Doc
     const addMovies = (movies) => {
         const movieImg = document.querySelector('#movies-container');
-        let rating;
         
         movies.map((movie) => {
             let item =
@@ -139,8 +138,16 @@
                         });
                         getMoviesCert.map((movieCert) => { 
                             movieCert.release_dates.slice(0,1).forEach((release) => {
-                            addMovieRating(release)  
-                            ratingList.push(release.certification) 
+                                if (release.certification === "") {
+                                    movieCert.release_dates.slice(1,2).forEach((release) => {
+                                        addMovieRating(release)  
+                                        ratingList.push(release.certification) 
+                                    })
+                                }else {
+                                    addMovieRating(release)  
+                                    ratingList.push(release.certification) 
+                                }
+                            
                             });
                         });  
                     ;
@@ -148,13 +155,10 @@
             // CLOSE POPUP
                 let closeBtn = document.querySelector(`#btn-${movie.id}`);
                 closeBtn.addEventListener("click", () => {
-                    //console.log(`close me ${movie.id}`)
                     popupBox.style.display = "none";
                 });    
                 movieNames.push(movie);
-                
-                
-               
+                        
                
 
         }); //END OF "MOVIES"
