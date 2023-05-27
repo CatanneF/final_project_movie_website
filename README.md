@@ -1,4 +1,4 @@
-### final_project_movie_website
+#### final_project_movie_website
 
 # Movies Now Playing Website
 
@@ -14,7 +14,7 @@ The main page allows the user to view posters and the names of the currenty play
 ⋅⋅* A dropdown menu to filter movies by their rating(G, PG, PG-13, and R)
 ⋅⋅* A dropdown menu to filter movies by their genre (Action, Adventure, Comedy, Drama, Fantasy, Horror, Mystery, and Romance)
 
-When the user clicks on one of the movie posters or name, a popup box will appear that has more information about the selected film. THe popup contains the movie's rating, release date, overview, and a cast list. 
+When the user clicks on one of the movie posters or name, a popup box will appear that has more information about the selected film. THe popup contains the movie's rating, release date, overview, and a cast list.
 
 ## Links
 
